@@ -6,9 +6,13 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 
 class CharCard extends Component {
   render() {
-    const { thumbnail, name } = this.props;
+    const { thumbnail, name, id } = this.props;
     return (
-      <li className="char__item">
+      <li
+        className="char__item"
+        key={id}
+        onClick={() => this.props.onCharSelected(id)}
+      >
         <img src={thumbnail} alt={name} />
         <div className="char__name">{name}</div>
       </li>
@@ -53,7 +57,13 @@ class CharList extends Component {
     const content = !(loading || error) ? (
       <ul className="char__grid">
         {chars.map((char) => (
-          <CharCard key={char.id} name={char.name} thumbnail={char.thumbnail} />
+          <CharCard
+            key={char.id}
+            id={char.id}
+            name={char.name}
+            thumbnail={char.thumbnail}
+            onCharSelected={this.props.onCharSelected}
+          />
         ))}
       </ul>
     ) : null;

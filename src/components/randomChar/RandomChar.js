@@ -18,17 +18,22 @@ class RandomChar extends Component {
     this.updateChar();
   }
 
-  onError = () => {
+  onCharLoading = () => {
     this.setState({
-      loading: false,
-      error: true,
+      loading: true,
     });
   };
-
   onCharLoaded = (char) => {
     this.setState({
       char,
       loading: false,
+    });
+  };
+
+  onError = () => {
+    this.setState({
+      loading: false,
+      error: true,
     });
   };
 
