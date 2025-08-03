@@ -25,6 +25,7 @@ class CharList extends Component {
     chars: [],
     loading: true,
     error: false,
+    charEnded: false,
   };
 
   marvelService = new MarvelService();
