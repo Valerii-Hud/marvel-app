@@ -14,6 +14,9 @@ class CharInfo extends Component {
   componentDidMount() {
     this.updateChar();
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.charId !== prevProps.charId) this.updateChar();
+  }
 
   onCharLoading = () => {
     this.setState({
@@ -33,9 +36,7 @@ class CharInfo extends Component {
       error: true,
     });
   };
-  componentDidUpdate(prevProps) {
-    if (this.props.charId !== prevProps.charId) this.updateChar();
-  }
+
   updateChar = () => {
     const { charId } = this.props;
     if (!charId) return;
